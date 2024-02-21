@@ -1,0 +1,59 @@
+<!-- user-info.component.html -->
+<div class="w-full h-screen flex items-center justify-center relative">
+    <button class="absolute top-2 right-2 border border-red-400 p-2 rounded-lg" (click)="logout()">Logout</button>
+    <div class="w-[400px] h-fit p-6 bg-white rounded-lg shadow border">
+      <h3 class="text-xl font-bold mb-4">User Information</h3>
+      <form #updateForm="ngForm" (ngSubmit)="updateUserInfo(updateForm.value)">
+        <label for="name" class="block text-sm font-semibold text-gray-600 mb-1"
+          >Name:</label
+        >
+        <input
+          type="text"
+          id="name"
+          name="name"
+          [(ngModel)]="userInfo.name"
+          required
+          class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500"
+        />
+    
+        <label
+          for="email"
+          class="block mt-4 text-sm font-semibold text-gray-600 mb-1"
+          >Email:</label
+        >
+        <input
+          type="email"
+          id="email"
+          name="email"
+          [(ngModel)]="userInfo.email"
+          required
+          class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500"
+        />
+    
+        <label for="role" class="block text-sm font-semibold text-gray-600 mb-1"
+          >User Role:</label
+        >
+        <input
+          type="text"
+          id="role"
+          name="role"
+          [value]="userInfo.role === 1 ? 'Admin' : 'User'"
+          required
+          disabled
+          class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500"
+        />
+        
+        <div class="flex mt-2 justify-between items-center">
+          <button
+            type="submit"
+            [disabled]="updateForm.invalid"
+            class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue"
+          >
+            Update
+          </button>
+
+          <a href="/user-password" class="text-blue-600 underline">update password?</a>
+        </div>
+      </form>
+    </div>
+</div>
